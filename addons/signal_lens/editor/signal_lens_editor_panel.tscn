@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c3d2dcu7sofv3" path="res://addons/signal_lens/icons/icon_reload.svg" id="7_jobfo"]
 [ext_resource type="Texture2D" uid="uid://csx0bkn0vge5e" path="res://addons/signal_lens/icons/icon_timer.svg" id="7_mvc1r"]
 
-[node name="Signal Lens" type="Control" node_paths=PackedStringArray("graph_edit", "node_path_line_edit", "refresh_button", "clear_button", "inactive_text", "lock_checkbox", "freeze_checkbox", "emission_speed_slider", "emission_speed_icon")]
+[node name="Signal Lens" type="Control" node_paths=PackedStringArray("graph_edit", "node_path_line_edit", "refresh_button", "clear_button", "inactive_text", "lock_checkbox", "freeze_checkbox", "emission_speed_slider", "emission_speed_icon", "menu_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +25,7 @@ lock_checkbox = NodePath("EditorPanel/MainButtonsContainer/HBoxContainer2/LockCh
 freeze_checkbox = NodePath("EditorPanel/MainButtonsContainer/HBoxContainer2/FreezeCheckbox")
 emission_speed_slider = NodePath("EditorPanel/MainButtonsContainer/HBoxContainer2/EmissionSpeedContainer/EmissionSpeedSlider")
 emission_speed_icon = NodePath("EditorPanel/MainButtonsContainer/HBoxContainer2/EmissionSpeedContainer/EmissionSpeedIcon")
+menu_button = NodePath("EditorPanel/MainButtonsContainer/HBoxContainer2/MenuButton")
 
 [node name="EditorPanel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -53,6 +54,10 @@ theme_override_constants/margin_bottom = 15
 [node name="HBoxContainer2" type="HBoxContainer" parent="EditorPanel/MainButtonsContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="MenuButton" type="Button" parent="EditorPanel/MainButtonsContainer/HBoxContainer2"]
+layout_mode = 2
+disabled = true
 
 [node name="ClearButton" type="Button" parent="EditorPanel/MainButtonsContainer/HBoxContainer2"]
 layout_mode = 2
@@ -113,8 +118,8 @@ stretch_mode = 3
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 1
-min_value = 0.3
-max_value = 6.0
+min_value = 0.1
+max_value = 5.0
 step = 0.1
 value = 1.0
 editable = false

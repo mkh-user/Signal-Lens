@@ -55,7 +55,10 @@ var pulsing_connections: Array = []
 @export var freeze_checkbox: CheckButton
 @export var emission_speed_slider: Slider
 @export var emission_speed_icon: TextureRect
-@export var emission_duration_: SpinBox
+@export var menu_button: Button
+
+func _ready() -> void:
+	menu_button.icon = EditorInterface.get_base_control().get_theme_icon("GuiTabMenuHl", "EditorIcons")
 
 ## Requests inspection of [param current_node] in remote scene
 func request_node_data():
