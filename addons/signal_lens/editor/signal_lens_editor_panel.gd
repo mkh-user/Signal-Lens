@@ -9,9 +9,6 @@ extends Control
 ## session is active
 const TUTORIAL_TEXT: String = "Select a node in the remote scene"
 
-## Default duration a signal emission pulse in seconds
-const DEFAULT_EMISSION_DURATION: float = 1.0
-
 ## Default opacity of a connection line in the graph when rendered
 ## TODO: This could be a user setting
 const DEFAULT_CONNECTION_OPACITY: float = 0.3
@@ -273,7 +270,7 @@ func pulse_connection(connection: Dictionary) -> void:
 
 func fade_out_connection(connection: Dictionary):
 	var tween := create_tween()
-	var fade_out_duration = DEFAULT_EMISSION_DURATION * emission_speed_multiplier
+	var fade_out_duration = emission_speed_multiplier
 	var from_node = connection["from_node"]
 	var from_port = connection["from_port"]
 	var to_node = connection["to_node"]
