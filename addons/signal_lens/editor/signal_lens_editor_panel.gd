@@ -10,7 +10,6 @@ extends Control
 const TUTORIAL_TEXT: String = "Select a node in the remote scene"
 
 ## Default duration a signal emission pulse in seconds
-## TODO: This could be a user setting
 const DEFAULT_EMISSION_DURATION: float = 1.0
 
 ## Default opacity of a connection line in the graph when rendered
@@ -38,6 +37,10 @@ var freeze_emissions: bool = false
 ## Acquired from slider in scene
 var emission_speed_multiplier: float = 1.0
 
+## Duration a signal emission pulse in seconds
+## From scene
+var emission_duration: float = 1.0
+
 ## Array that collects active pulse connections so that they can be
 ## all cleanup together when unfreezing emissions
 var pulsing_connections: Array = []
@@ -52,6 +55,7 @@ var pulsing_connections: Array = []
 @export var freeze_checkbox: CheckButton
 @export var emission_speed_slider: Slider
 @export var emission_speed_icon: TextureRect
+@export var emission_duration_: SpinBox
 
 ## Requests inspection of [param current_node] in remote scene
 func request_node_data():
