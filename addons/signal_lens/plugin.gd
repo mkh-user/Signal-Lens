@@ -10,6 +10,8 @@ const SIGNAL_LENS_EDITOR_PANEL = preload("res://addons/signal_lens/editor/signal
 ## so we can retrieve/send data to it
 const AUTOLOAD_NAME = "SignalLens"
 
+static var settings
+
 ## Debugger object that listens to Godot's callbacks
 var debugger: SignalLensDebugger = null
 
@@ -57,6 +59,8 @@ func initialize():
 	# Connect node selection to editor panel so line edit can reflect currently
 	# selected node's path
 	remote_node_inspector.node_selected.connect(editor_panel.assign_node_path)
+	
+	# Get new setting panel
 
 ## Removes plugin from editor and cleans references
 func cleanup():
