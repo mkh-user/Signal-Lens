@@ -6,11 +6,13 @@ extends EditorPlugin
 ## Godot's debugger bottom panel
 const SIGNAL_LENS_EDITOR_PANEL = preload("res://addons/signal_lens/editor/signal_lens_editor_panel.tscn")
 
+const SIGNAL_LENS_SETTINGS = preload("res://addons/signal_lens/editor/Settings/SignalLensSettings.gd")
+
 ## Name of autoload node/class that will be instantiated in the remote scene
 ## so we can retrieve/send data to it
 const AUTOLOAD_NAME = "SignalLens"
 
-static var settings
+var settings: SignalLensSettings = null
 
 ## Debugger object that listens to Godot's callbacks
 var debugger: SignalLensDebugger = null
@@ -21,16 +23,21 @@ var remote_node_inspector: SignalLensRemoteNodeInspector = null
 ## Editor panel that draws data received from remote scene
 var editor_panel: SignalLensEditorPanel = null
 
+
 ## Setups the plugin and connects internal components
 ## Called on enter editor scene tree
 func initialize():
-	# Create debugger and inspector objects
+	# Create debugger, inspector and settings objects
 	debugger = SignalLensDebugger.new()
 	remote_node_inspector = SignalLensRemoteNodeInspector.new()
+	settings = SignalLensSettings.new()
 	
 	# Register plugins in the engine
 	add_inspector_plugin(remote_node_inspector)
 	add_debugger_plugin(debugger)
+	
+	# Add settings as child
+	add_child(settings)
 	
 	# Connect node selection in scene tree to backend request for
 	# that node's signal data
@@ -67,6 +74,8 @@ func cleanup():
 	# De-register plugins from engine
 	remove_debugger_plugin(debugger)
 	remove_inspector_plugin(remote_node_inspector)
+	
+	settings.queue_free()
 	
 	# Remove references to initialized components
 	remote_node_inspector = null
