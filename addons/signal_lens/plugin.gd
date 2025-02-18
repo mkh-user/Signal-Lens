@@ -6,7 +6,7 @@ extends EditorPlugin
 ## Godot's debugger bottom panel
 const SIGNAL_LENS_EDITOR_PANEL = preload("res://addons/signal_lens/editor/signal_lens_editor_panel.tscn")
 
-const SIGNAL_LENS_SETTINGS = preload("res://addons/signal_lens/editor/Settings/SignalLensSettings.gd")
+const SIGNAL_LENS_SETTINGS = preload("res://addons/signal_lens/editor/Settings/signal_lens_settings.gd")
 
 ## Name of autoload node/class that will be instantiated in the remote scene
 ## so we can retrieve/send data to it
@@ -75,6 +75,7 @@ func cleanup():
 	remove_debugger_plugin(debugger)
 	remove_inspector_plugin(remote_node_inspector)
 	
+	remove_child(settings)
 	settings.queue_free()
 	
 	# Remove references to initialized components
