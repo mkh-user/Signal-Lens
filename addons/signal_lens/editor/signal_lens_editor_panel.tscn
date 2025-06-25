@@ -56,11 +56,14 @@ theme_override_constants/separation = 10
 layout_mode = 2
 tooltip_text = "Options Button
 See & Change options."
-icon = SubResource("ImageTexture_cmxsg")
-item_count = 1
+icon = SubResource("ImageTexture_jukfq")
+item_count = 2
 popup/item_0/text = "Hide signals without connections"
 popup/item_0/checkable = 1
 popup/item_0/checked = true
+popup/item_1/text = "Hide built-in signals"
+popup/item_1/checkable = 1
+popup/item_1/id = 1
 
 [node name="ClearButton" type="Button" parent="EditorPanel/MainButtonsContainer/HBoxContainer2"]
 layout_mode = 2
